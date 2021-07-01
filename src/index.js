@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+// const dotenv = require('dotenv');
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import YTsearch from 'youtube-api-search';
 
-const APIkey = 'AIzaSyBXrNexuFYAbDH3_JTfoeuk4if5puSwpHo'
+const APIkey = 'process.env.REACT_APP_YT_API';
 
 // const App = () => {
 //   return (
@@ -21,7 +22,7 @@ class App extends Component {
     this.state={videos: []};
     
     YTsearch({key: APIkey, term: 'windows'}, (videos) => {
-      console.log(videos);
+      console.log(this.state.videos.length);
       // this.setState({videos: videos});
       this.setState({ videos: videos });
     });
@@ -32,7 +33,7 @@ class App extends Component {
       <div>
         <SearchBar />
         <VideoList videos={this.state.videos} />
-        {console.log(this.state.videos)}
+        {/* {console.log(this.state.videos)} */}
       </div>
     );
   }
