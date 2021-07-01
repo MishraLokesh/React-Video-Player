@@ -5,8 +5,9 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import YTsearch from 'youtube-api-search';
 
-const APIkey = 'process.env.REACT_APP_YT_API';
-
+// console.log(process.env);
+// const APIkey = process.env.REACT_APP_YT_API;
+const APIkey = 'AIzaSyBXrNexuFYAbDH3_JTfoeuk4if5puSwpH';
 // const App = () => {
 //   return (
 //   <div>
@@ -22,7 +23,6 @@ class App extends Component {
     this.state={videos: []};
     
     YTsearch({key: APIkey, term: 'windows'}, (videos) => {
-      console.log(this.state.videos.length);
       // this.setState({videos: videos});
       this.setState({ videos: videos });
     });
@@ -33,7 +33,7 @@ class App extends Component {
       <div>
         <SearchBar />
         <VideoList videos={this.state.videos} />
-        {/* {console.log(this.state.videos)} */}
+        {console.log(this.state.videos)}
       </div>
     );
   }
